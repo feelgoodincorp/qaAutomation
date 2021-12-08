@@ -1,0 +1,14 @@
+package com.test.Pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+public abstract class Page {
+
+    WebDriver driver;
+
+    public Page(WebDriver driver){
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
+    }
+}
