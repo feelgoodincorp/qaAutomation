@@ -1,5 +1,9 @@
 package com.test.Pages;
 
+import com.test.PageFragments.Header;
+import com.test.PageFragments.ProductPreview;
+import com.test.PageFragments.ProductSlider;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -7,10 +11,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import PageFragments.Header;
-import PageFragments.ProductPreview;
-import PageFragments.ProductSlider;
 
 public class ProductPage extends Page{
     

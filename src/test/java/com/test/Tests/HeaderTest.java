@@ -7,23 +7,28 @@ import com.test.Pages.ProductPage;
 import com.test.Pages.SearchResultPage;
 
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
+import org.junit.jupiter.api.DisplayName;
+//import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 
 public class HeaderTest extends Autotest{
 
     //write wich test is failed
-    public static WebDriver driver;
+    //public static WebDriver driver;
     public static HomePage homePage;
     public static CatalogPage catalogPage;
     public static SearchResultPage searchResultPage;
     public static ProductPage productPage;
 
 
-
-    //locations list test scenery
     @Test
+    public void temp(){
+        driver.get(ConfProperties.get("mainpage"));
+    }
+
+    @DisplayName("locations list")
+    //@Test(enabled = false)
     public void locationsButton(){
         driver.get(ConfProperties.get("mainpage"));
 
@@ -45,7 +50,7 @@ public class HeaderTest extends Autotest{
 
 
     //phone numbers list scenery
-    @Test
+    //@Test(enabled = false)
     public void phoneButton(){
         SoftAssert softAssert = new SoftAssert();
 
@@ -60,7 +65,7 @@ public class HeaderTest extends Autotest{
 
     }
 
-    @Test
+    //@Test(enabled = false)
     public void searchField(){
         SoftAssert softAssert = new SoftAssert();
 
@@ -68,10 +73,10 @@ public class HeaderTest extends Autotest{
         String nonExistingItemRequestRu = ConfProperties.get("nonExistingItemNameRU");
         
         homePage.header.writeSearchRequest(nonExistingItemRequestRu);
-        softAssert.assertFalse(homePage.header.isSearchResultFounded(), "error: have finded items");
+        //softAssert.assertFalse(homePage.header.isSearchResultFounded(), "error: have finded items");
         homePage.header.searchClear();
         homePage.header.writeSearchRequest(existingItemRequestRu);
-        softAssert.assertTrue(homePage.header.isSearchResultFounded(), "error: no founded items");
+        //softAssert.assertTrue(homePage.header.isSearchResultFounded(), "error: no founded items");
 
         homePage.header.searchClear();
         homePage.header.writeSearchRequest(existingItemRequestRu);

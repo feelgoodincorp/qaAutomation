@@ -1,49 +1,35 @@
 package com.test.Pages;
 
+import com.test.Locators;
+import com.test.PageFragments.Header;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import PageFragments.Header;
-
-public class HomePage {
-    WebDriver driver;
+public class HomePage extends Page{
     public Header header;
     final WebDriverWait wait;
 
     public HomePage(WebDriver driver){
+        super(driver);
         header = new Header(driver);
-        PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, 3);
-        this.driver = driver;
     }
 
-    //use one WebDriverWait for all elements
-
-    //element is not shown after load, so is allways be not finded
-
-
-    //mini item's card
-    public void clickAddToFavorites(){
-
+    public WebElement getMenuList(){    
+        try {
+            //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='" + Locators.get("desktopMenuListClass") + "']")));
+            //попробовать с class
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='" + Locators.get("desktopMenuListClass") + "']")));
+            return driver.findElement(By.xpath("//ul[@class='" + Locators.get("desktopMenuListClass") + "']"));
+        } catch (Exception e) {
+            System.out.println("buttons list not founded");
+            return null;
+        } 
     }
-
-    public void clickAddToBasket(){
-
-    }
-
-    
-
-    // public WebElement getMenuList(){
-    
-    //     try {
-    //         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='" + desktopMenuListClass + "']")));
-    //         return driver.findElement(By.xpath("//ul[@class='" + desktopMenuListClass + "']"));
-    //     } catch (Exception e) {
-    //         System.out.println("buttons list not founded");
-    //         return null;
-    //     } 
-    // }
 
     // public List<WebElement> getDesktopMenuButtons(){
     //     try {
@@ -75,5 +61,4 @@ public class HomePage {
     public void clickOnLogin(){
 
     }
-
 }

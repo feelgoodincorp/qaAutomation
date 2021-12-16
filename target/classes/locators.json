@@ -1,5 +1,6 @@
 {
-    "logoBtnClass": "header__logo",
+    "logoXpath": "//div[@class='logoBtnClass']",
+    "logoBtnClass": "header__logo", 
     "desktopMenuListClass": "navigation__list navigation__list--desktop",
     "locationListXpath": "/html/body/header/div/div[2]/div[2]/ul",
     "locationButtonClass": "header__location",
@@ -10,10 +11,11 @@
     "languageButtonXpath": "//ul[@class='language']/li/a",
     "searchFieldName": "search",
     "searchResultClass": "live-search",
+    "searchResultItemXpath": "//div[@class='live-search']/ul/li[not(text() = 'Нет товаров, соответствующих критериям поиска.' or text()= 'Немає товарів, які відповідають критеріям пошуку.')]",
     "searchResultLinkXpath": "//div[@class='live-search']/ul/li/a",
     "allResultsButtonXpath": "//div[@class='result-text']/a",
+    "noSearchResultText": "//div[@class='live-search']/ul/li[(text() = 'Нет товаров, соответствующих критериям поиска.' or text()= 'Немає товарів, які відповідають критеріям пошуку.')]",
 
-    
     "toBasketButtonXPath": "//button[@class='add-to-cart product__add']",
     "toItemPageButtonXpath": "//a[@class='product__title']",
 
@@ -25,8 +27,8 @@
     "toFavButtonXpath": "//button[@class='item__wishlist card__item-like ']",
     "increaseButtonXpath": "//button[@class='counter__plus']",
     "decreaseButtonXpath": "//button[@class='counter__minus']",
-    "toBasketButtonId": "button-cart",
-    "noSearchResultText": "//div[@class='live-search']/ul/li[text() = 'Нет товаров, соответствующих критериям поиска.' or text() = 'Немає товарів, які відповідають критеріям пошуку.']"
+    "toBasketButtonId": "button-cart"
+    
 
 
 }

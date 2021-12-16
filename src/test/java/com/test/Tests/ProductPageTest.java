@@ -5,15 +5,18 @@ import com.test.Pages.ProductPage;
 import com.test.Pages.SearchResultPage;
 
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 
 public class ProductPageTest extends Autotest{
     
     public static ProductPage productPage;
     public static SearchResultPage searchResultPage;
-    public String pageUrl = ConfProperties.get("productpage");
-    //public String pageUrl = ConfProperties.getProperty("mainpage");
+    //public String pageUrl = ConfProperties.get("productpage");
+    public String pageUrl = ConfProperties.get("mainpage");
 
+    
     @Test
+    @DisplayName("check logo clickability")
     public void test() {
 
         //сначала открытие страницы, потом все конструкторы(т.к. в них могут создаваться объекты страницы)
@@ -22,6 +25,9 @@ public class ProductPageTest extends Autotest{
         driver.get(pageUrl);
         productPage = new ProductPage(driver);
         searchResultPage = new SearchResultPage(driver);
+
+        
+
         
         //assertTrue(productPage.isInitialized());
 
@@ -51,15 +57,23 @@ public class ProductPageTest extends Autotest{
         //System.out.println(Locators.getLocator("logoBtnClass"));
 
 
-        //lot of waits as temporary solution
-        productPage.header.writeSearchRequest(ConfProperties.get("nonExistingItemNameRU"));
-        System.err.println(productPage.header.isSearchResultFounded());
+        // productPage.header.writeSearchRequest(ConfProperties.get("nonExistingItemNameRU"));
+        // System.err.println("isNoResultsMessageDisplayed: " + productPage.header.isNoResultsMessageDisplayed());
+        // System.err.println("isResultsDisplayed: " + productPage.header.isResultsDisplayed());
+
+        // productPage.header.searchClear();
+        // productPage.header.writeSearchRequest(ConfProperties.get("existingItemNameRU"));
+        // System.err.println("isNoResultsMessageDisplayed: " + productPage.header.isNoResultsMessageDisplayed());
+        // System.err.println("isResultsDisplayed: " + productPage.header.isResultsDisplayed());
         
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        //productPage.header.searchClear();
+        //productPage.header.writeSearchRequest(ConfProperties.get("existingItemNameRU"));
+        //productPage.header.writeSearchRequest("пицца");
+        //productPage.header.clickResultItem(5);
+
+        //Assert.fail("element by locator " + byLocator + " is not finded");
+    
         // searchResultPage.clickResultItem(1);
         // try {
         //     Thread.sleep(4000);
@@ -83,39 +97,7 @@ public class ProductPageTest extends Autotest{
         // searchResultPage.clickResultItem(1);
         // productPage.clickAddToBasket();
 
-
         //productPage.productSlider.clickLeftArrow();
-        
-
-  
    }
 
-
-    // @BeforeClass
-    // public static void setup() {
-    //     System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
-
-    //     ChromeOptions chromeOptions = new ChromeOptions();
-    //     //chromeOptions.addArguments("--headless");
-    //     //chromeOptions.addArguments("--no-sandbox");
-        
-    //     driver = new ChromeDriver(chromeOptions);
-    //     driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-    //     driver.manage().window().setSize(new Dimension(1024,768));
-    //     driver.manage().window().setPosition(new Point(1800,0));
-    //     driver.manage().deleteAllCookies();
-    //     driver.get(ConfProperties.getProperty("mainpage"));
-    //     productPage = new ProductPage(driver);
-    // }
-
-    // @Test
-    // public void isPriceShown(){
-    //     System.out.println("text");
-    // }
-
-    // @AfterClass
-    // public static void tearDown() {
-    //     // TODO Auto-generated method stub
-        
-    // }
 }

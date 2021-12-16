@@ -1,39 +1,19 @@
 package com.test.Tests;
 
-import java.util.concurrent.TimeUnit;
+import java.io.File;
+import java.io.IOException;
 
-import com.test.ConfProperties;
 import com.test.Pages.SearchResultPage;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
 
-public class SearchTest{
+public class SearchTest extends Autotest{
 
-    public static WebDriver driver;
     public static SearchResultPage page;
-    @BeforeClass
-    public static void setup(){
-        System.setProperty("webdriver.chrome.driver", ConfProperties.get("chromedriver"));
-
-        ChromeOptions chromeOptions = new ChromeOptions();
-        //chromeOptions.addArguments("--headless");
-        //chromeOptions.addArguments("--no-sandbox");
-        
-        driver = new ChromeDriver(chromeOptions);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().setSize(new Dimension(1024,768));
-        driver.manage().window().setPosition(new Point(1800,0));
-        driver.get(ConfProperties.get("mainpage"));
-
-        page = new SearchResultPage(driver);
-    }
     
         //десктоп:
         //проверка на открытие при вводе текста, скрытии при удалении
@@ -53,6 +33,7 @@ public class SearchTest{
     @Test
     public void run(){
         //page.writeRequest("request");
+        
     }
 
     //all same tests, but on all versions
@@ -64,15 +45,14 @@ public class SearchTest{
         // this.run();
     }
 
-    @AfterClass
-    public static void tearDown(){
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        driver.quit();
+    @AfterMethod
+    public void screenShot() throws IOException {
+        TakesScreenshot scr = ((TakesScreenshot) driver);
+        File file1 = scr.getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(file1, new File("/screenshots/"));
     }
+
+
 
 
 
